@@ -16,7 +16,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.senai.carteirinha_dalessio.R
 import com.senai.carteirinha_dalessio.feature.Login.domain.model.UsuarioLogado
@@ -27,7 +26,7 @@ import com.senai.carteirinha_dalessio.feature.Login.presentation.LoginViewModel
 fun LoginScreen(
     navController: NavController,
     modifier: Modifier = Modifier,
-    viewModel: LoginViewModel = viewModel(),
+    viewModel: LoginViewModel,
     onLoginSucesso: (UsuarioLogado) -> Unit
 ) {
 
