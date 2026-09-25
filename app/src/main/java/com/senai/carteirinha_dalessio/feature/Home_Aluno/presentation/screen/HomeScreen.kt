@@ -2,27 +2,22 @@ package com.senai.carteirinha_dalessio.feature.Home_Aluno.presentation.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.senai.carteirinha_dalessio.feature.Home_Aluno.component.BotaoNavegacao
 import com.senai.carteirinha_dalessio.App.Navigation.Routes
 import com.senai.carteirinha_dalessio.R
-
+import com.senai.carteirinha_dalessio.feature.Home_Aluno.component.BotaoNavegacao
 
 @Composable
 fun HomeScreen(
@@ -31,81 +26,120 @@ fun HomeScreen(
 ) {
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
-            .background(Color.White)
-            .padding(horizontal = 30.dp),
-
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(MaterialTheme.colorScheme.background)
+            .statusBarsPadding()
+            .navigationBarsPadding()
+            .padding(horizontal = 24.dp)
     ) {
 
-        Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "Olá aluno!",
-            fontSize = 32.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF2145B5)
+            text = "Olá, Marco!",
+            style = MaterialTheme.typography.displaySmall,
+            color = MaterialTheme.colorScheme.onBackground
         )
 
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(6.dp))
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+        Text(
+            text = "Bem-vindo ao seu portal SENAI",
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(24.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            ),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 2.dp
+            )
         ) {
-            Text(
-                text = "Willian Gama",
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Gray
-            )
 
-            Box(
-                modifier = Modifier
-                    .width(250.dp)
-                    .height(2.dp)
-                    .background(Color(0xFFFF643C))
-            )
+            Column(
+                modifier = Modifier.padding(24.dp)
+            ) {
 
+                Text(
+                    text = "ALUNO",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.primary
+                )
 
-            Spacer(modifier = Modifier.height(35.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
+                Text(
+                    text = "Marco Dalessio",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold
+                )
 
-            Text(
-                text = "Desenvolvimento de sistemas",
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Gray
-            )
+                Spacer(modifier = Modifier.height(6.dp))
 
-            Box(
-                modifier = Modifier
-                    .width(250.dp)
-                    .height(2.dp)
-                    .background(Color(0xFFFF643C))
-            )
+                Text(
+                    text = "Desenvolvimento de Sistemas",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Text(
+                    text = "SENAI",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
-        BotaoNavegacao("Carteirinha", onClick = {
-            navController.navigate(Routes.Carteirinha.route)
-        })
+        Text(
+            text = "Acesso rápido",
+            style = MaterialTheme.typography.titleLarge
+        )
 
-        Spacer(modifier = Modifier.height(35.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
-        BotaoNavegacao("UCs", onClick = {
-            navController.navigate(Routes.UnidadeCurricularAluno.route)
-        })
+        BotaoNavegacao(
+            text = "Minha carteirinha",
+            onClick = {
+                navController.navigate(
+                    Routes.Carteirinha.route
+                )
+            }
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        BotaoNavegacao(
+            text = "Unidades curriculares",
+            onClick = {
+                navController.navigate(
+                    Routes.UnidadeCurricularAluno.route
+                )
+            }
+        )
 
         Spacer(modifier = Modifier.weight(1f))
 
         Image(
-            painter = painterResource(id = R.drawable.logo_senai),
+            painter = painterResource(
+                id = R.drawable.logo_senai
+            ),
             contentDescription = "Logo SENAI",
-            modifier = Modifier.width(190.dp)
+            modifier = Modifier
+                .width(150.dp)
+                .align(Alignment.CenterHorizontally)
         )
 
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }

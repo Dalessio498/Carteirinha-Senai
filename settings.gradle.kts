@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Carteirinha_Will"
+rootProject.name = "Carteirinha_Senai"
 include(":app")
